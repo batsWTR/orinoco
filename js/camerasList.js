@@ -11,19 +11,15 @@ function getCameras(){
     requete.onload = function(){
         let reponse = requete.response;
         for(let i = 0; i < reponse.length; i++){
-           // let name = reponse[i]['name'];
             let id = reponse[i]['_id'];
-            //let description = reponse[i]['description'];
-            //let price = reponse[i]['price'];
-            //let image = reponse[i]['imageUrl'];
-            let lenses = reponse[i]['lenses'];
 
             // create card
             let card = document.createElement('div');
             card.classList.add('card');
             card.classList.add('col-12');
-            card.classList.add('col-md-6');
-            card.classList.add('col-lg-4');
+            card.classList.add('col-md-4');
+            card.classList.add('col-lg-3');
+            card.classList.add('m-2');
             mainContent.appendChild(card);
 
             // add image
@@ -41,16 +37,22 @@ function getCameras(){
             description.textContent = reponse[i]['description'];
             card.appendChild(description);
 
+            /* options are not important in index page
+            let lenses = document.createElement('span');
+            lenses.textContent =  reponse[i]['lenses'];
+            card.appendChild(lenses);  */
+
             // add price
             let price = document.createElement('span');
             let euros = parseInt(reponse[i]['price']);
-            euros = euros / 1000;
+            euros = euros / 100;
             price.textContent = euros + ' \u20ac';
             card.appendChild(price);
 
-            // add eventlistener
+            // add eventlistener and launch product page with corresponding id
             card.addEventListener('click', function(event){
                 console.log(name.textContent);
+                window.open('product.html', id);
             });
         }
     }
