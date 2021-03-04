@@ -52,7 +52,7 @@ function getCameras(){
             // add eventlistener and launch product page with corresponding id
             card.addEventListener('click', function(event){
                 console.log(name.textContent);
-                window.open('product.html', id);
+                window.open('product.html' + '?id=' + id, '_self');
             });
         }
     }

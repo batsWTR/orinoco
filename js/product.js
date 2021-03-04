@@ -3,13 +3,16 @@
 // load page for 1 product
 
 
-let cameraPath = 'http://localhost:3000/api/cameras';
-let mainContent = document.getElementById('content');
+const cameraPath = 'http://localhost:3000/api/cameras';
+const mainContent = document.getElementById('content');
 
+// get id from product
+let param = new URLSearchParams(window.location.search);
+const id = param.get('id');
 
 function getProduct(){
     let requete = new XMLHttpRequest();
-    requete.open('GET', cameraPath + '/' + window.name); // window.name = id of camera
+    requete.open('GET', cameraPath + '/' + id);
     requete.responseType = 'json';
     requete.send(null);
     requete.onload = function(){
@@ -81,3 +84,4 @@ function getProduct(){
 }
 
 getProduct();
+
