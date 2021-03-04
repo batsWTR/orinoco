@@ -4,6 +4,10 @@
 document.addEventListener('DOMContentLoaded', () =>{
     const cameraPath = 'http://localhost:3000/api/cameras';
     const mainContent = document.getElementById('content');
+
+    // create local storage for panier as array
+    localStorage.setItem("panier", JSON.stringify([]));
+    console.log(localStorage.getItem("panier"));
     
     function getCameras(){
         let requete = new XMLHttpRequest();

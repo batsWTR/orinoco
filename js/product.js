@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () =>{
     const cameraPath = 'http://localhost:3000/api/cameras';
     const mainContent = document.getElementById('content');
     
+    let panier = localStorage.getItem("panier");
+    panier = JSON.parse(panier);
+    console.log(panier);
     // get id from product
     let param = new URLSearchParams(window.location.search);
     const id = param.get('id');
