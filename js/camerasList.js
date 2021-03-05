@@ -20,7 +20,39 @@ class panierSave{
     static getAll(){}
 }
 
-// wait until DOM is loaded
+
+// script Orinoco pages presentation des produits caméras
+
+const addressRequest = 'http://localhost:3000/api/cameras';
+
+
+
+document.addEventListener('DOMContentLoaded', () =>{
+    const baliseMain = document.getElementById('content');
+    fetch(addressRequest)
+    .then(response => response.json())
+    .then(function(response){
+        for(item of response){
+            let id = item['_id'];
+            let card = document.createElement('div');
+            card.classList.add('card', 'col-12', 'col-md-4', 'col-lg-3', 'm-2');
+            card.innerHTML = "<img src='" + item['imageUrl'] + "'/><h2>" + item['name'] + "</h2>" + "<p>" + item['description'] + "</p>" + "<span>" + parseInt(item['price']) + "\u20ac" + "</span>";
+            console.log(item['_id']);
+            baliseMain.appendChild(card);
+            // add eventlistener and launch product page with corresponding id
+            card.addEventListener('click', ()=>{
+                window.open('product.html?id=' + id, '_self');
+            });
+        }
+    });
+});
+
+
+
+
+
+
+/*/ wait until DOM is loaded
 document.addEventListener('DOMContentLoaded', () =>{
     const cameraPath = 'http://localhost:3000/api/cameras';
     const mainContent = document.getElementById('content');
@@ -63,10 +95,6 @@ document.addEventListener('DOMContentLoaded', () =>{
                 description.textContent = reponse[i]['description'];
                 card.appendChild(description);
     
-                /* options are not important in index page
-                let lenses = document.createElement('span');
-                lenses.textContent =  reponse[i]['lenses'];
-                card.appendChild(lenses);  */
     
                 // add price
                 let price = document.createElement('span');
@@ -89,10 +117,10 @@ document.addEventListener('DOMContentLoaded', () =>{
     
     getCameras();
     //localStorage.clear();
-    panierSave.add();
+    //panierSave.add();
     //console.log(localStorage.getItem('bats'));
 });
-
+*/
 
 
 

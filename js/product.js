@@ -1,5 +1,9 @@
 
 
+
+
+
+
 // load page for 1 product
 
 document.addEventListener('DOMContentLoaded', () =>{
