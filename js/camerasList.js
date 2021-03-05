@@ -1,13 +1,33 @@
 
 
+// class for panier storage
+class panierSave{
+    //add object in local storage
+    static add(id, name){
+        if (!localStorage.getItem('panier')){
+            console.log('pas d enregistrements');
+            //creer le panier
+            return;
+        }
+        // affiche local
+        console.log(localStorage.getItem('panier'));
+    }
+    // remove object with corresponding id
+    static remove(id){}
+    // return the numner of items in panier
+    static count(){}
+    // get all id of panier
+    static getAll(){}
+}
+
 // wait until DOM is loaded
 document.addEventListener('DOMContentLoaded', () =>{
     const cameraPath = 'http://localhost:3000/api/cameras';
     const mainContent = document.getElementById('content');
 
     // create local storage for panier as array
-    localStorage.setItem("panier", JSON.stringify([]));
-    console.log(localStorage.getItem("panier"));
+    //localStorage.setItem("panier", JSON.stringify([]));
+    //console.log(localStorage.getItem("panier"));
     
     function getCameras(){
         let requete = new XMLHttpRequest();
@@ -68,6 +88,9 @@ document.addEventListener('DOMContentLoaded', () =>{
     
     
     getCameras();
+    //localStorage.clear();
+    panierSave.add();
+    //console.log(localStorage.getItem('bats'));
 });
 
 
