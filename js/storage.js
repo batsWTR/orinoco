@@ -41,7 +41,7 @@ class panierSave{
 }
 
 
-
+/*
 let bats = {name:'bats', age: 44};
 panierSave.clear();
 panierSave.add(bats);
@@ -54,3 +54,4 @@ panierSave.add({name:'martine', age: 32});
 panierSave.add({name:'raph', age: 23});
 console.log(panierSave.count());
 console.log(panierSave.getAll());
+*/

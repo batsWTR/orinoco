@@ -5,13 +5,16 @@
 
 // script Orinoco pages presentation des produits caméras
 
-const addressRequest = 'http://localhost:3000/api/cameras';
+const cameraPath = 'http://localhost:3000/api/cameras';
+
+// RAZ previous panier
+//localStorage.clear();
 
 
 
 document.addEventListener('DOMContentLoaded', () =>{
     const baliseMain = document.getElementById('content');
-    fetch(addressRequest)
+    fetch(cameraPath)
     .then(response => response.json())
     .then(function(response){
         for(item of response){
