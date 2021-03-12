@@ -20,23 +20,40 @@
                         Orinoco
                     </a>
                     <ul class="navbar-nav">
-                        <li class="nav-item ">
+                        <li class="nav-item active">
                             <a class="nav-link" href="index.html">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Panier</a>
+                            <a class="nav-link" href="panier.html"><i class="fas fa-shopping-bag"></i></a>
                         </li>
                     </ul>
                 </nav>
-
             </div>
         </header>
+        <div class="modal fade" id="fenModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Vos achats</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button id="btn-continuer" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuer</button>
+                  <button id="btn-payer" type="button" class="btn btn-primary" data-bs-dismiss="modal">Panier</button>
+                </div>
+              </div>
+            </div>
+          </div>
         <main class="container">
             <div class="row" id="content"></div>
         </main>
         <footer>
             
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
         <script src="js/storage.js"></script>
         <script src="js/product.js"></script>
     </body>

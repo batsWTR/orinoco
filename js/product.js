@@ -19,17 +19,26 @@ document.addEventListener('DOMContentLoaded', () =>{
         "'/><h2>" + response['name'] + "</h2>" + 
         "<p>" + response['description'] + "</p>" + 
         "<span>" + parseInt(response['price']) / 100 + " \u20ac" + "</span>" +
-        "<a id='button' href='shop.html' class='btn btn-primary col-12 m-auto'>Ajouter au panier</a>";
+        "<button id='button' class='btn btn-primary col-12 m-auto' data-bs-toggle='modal' data-bs-target='#fenModal'>Ajouter au panier</button>";
 
 
         console.log(response['_id']);
         baliseMain.appendChild(card);
 
         let button = document.querySelector('#button');
-        button.addEventListener('click', function(e){
+        button.addEventListener('click', function(){
             panierSave.add(response);
         });
         
+        let btn_continuer = document.querySelector('#btn-continuer');
+        btn_continuer.addEventListener('click', function(){
+            window.open('index.html', '_self');
+        });
+
+        let btn_payer = document.querySelector('#btn-payer');
+        btn_payer.addEventListener('click', function(){
+            window.open('panier.html', '_self');
+        });
     });
 });
 

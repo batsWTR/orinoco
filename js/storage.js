@@ -12,30 +12,35 @@ class panierSave{
             localStorage.setItem('panier',JSON.stringify(firstTab));
             return;
         }
-        // affiche local
         let jsonPanier = JSON.parse(localStorage.getItem('panier'));
         jsonPanier.push(item);
         localStorage.setItem('panier', JSON.stringify(jsonPanier));
         console.log('add: ', item.name);
     }
-    // remove object with corresponding id
+    // remove first object with corresponding id
     static remove(id){
-        console.log('remove');
+        console.log('remove id');
     }
     // return the numner of items in panier
     static count(){
-        return JSON.parse(localStorage.getItem('panier')).length;
-
+        console.log('Count number of items')
+        let count = 0;
+        try{
+            count = JSON.parse(localStorage.getItem('panier')).length;
+        }catch{
+            count = 0;
+        }
+        return count;
     }
-    // get all id of panier
+    // get all id of panier or 0
     static getAll(){
-       // console.log('get all');
+        console.log('get all id');
         let tabItem = JSON.parse(localStorage.getItem('panier'));
         return tabItem;
     }
     // clear all local storage
     static clear(){
-        console.log('clear');
+        console.log('clear all local storage');
         localStorage.clear();
     }
 }
