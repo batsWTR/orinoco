@@ -12,6 +12,14 @@ const cameraPath = 'http://localhost:3000/api/cameras';
 
 
 
+
+/* Attend le chargement de la page puis recupere la liste sur le serveur
+    et lance la fonction make_card pour chaque produits
+
+
+    */
+
+    
 document.addEventListener('DOMContentLoaded', () =>{
     const baliseMain = document.getElementById('content');
     fetch(cameraPath)
