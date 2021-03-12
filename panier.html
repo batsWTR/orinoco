@@ -31,8 +31,9 @@
             </div>
         </header>
         <main class="container">
+            <!---     Facture                      -->
             <div class="row" id="content">
-                <table class="table col-12" id="table">
+                <table class="table col-12 col-lg-8 m-auto" id="table">
                     <thead class="thead-light">
                         <tr>
                             <th>Produit</th>
@@ -40,6 +41,32 @@
                         </tr>
                     </thead>
                 </table>
+            </div>
+            <!--    Formulaire de contact        -->
+            <div class="row">
+                <form id="formulaire" class="border p-3 m-auto col-12 col-lg-8">
+                    <div>
+                        <label>Email</label>
+                        <input type="email" required>
+                    </div>
+                    <div>
+                        <label for="firstName">Nom</label>
+                        <input id="firstName" type="text" maxlength="30" pattern="[A-Za-z]+" required>
+                    </div>
+                    <div>
+                        <label for="lastName">Prenom</label>
+                        <input id="lastName" type="text"  maxlength="30" pattern="[A-Za-z]+" required>
+                    </div>
+                    <div>
+                        <label for="address">Adresse</label>
+                        <input id="address" type="text"  maxlength="60" required>
+                    </div>
+                    <div>
+                        <label for="city">Ville</label>
+                        <input id="city" type="text"  maxlength="30" pattern="[A-Za-z]+" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary col-12 my-3">Commander</button>
+                </form>
             </div>
         </main>
         <footer>

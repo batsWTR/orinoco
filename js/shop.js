@@ -9,6 +9,15 @@ document.addEventListener('DOMContentLoaded', () =>{
 
     let table = document.querySelector('table');
     let body = document.createElement('tbody');
+    let formulaire = document.querySelector("#formulaire");
+
+    // Display form or not...
+    if (panierSave.count() === 0){
+        formulaire.style.display = 'none';
+    }else{
+        formulaire.style.display = 'block';
+    }
+
 
     try{
         for (let item of shopList){
@@ -19,16 +28,14 @@ document.addEventListener('DOMContentLoaded', () =>{
         }
         //create button for command
         let row = document.createElement('tr');
-        row.innerHTML = '<td colspan=2 class="text-right">' + total / 100 + '</td>';
+        row.innerHTML = '<td class="text-right">Total:</td><td class="text-right">' + total / 100 + '</td>';
         body.appendChild(row);
     // if shoplist is not iterable => shoplist = empty
     }catch{
-        body.innerHTML = "<h4 class='h4 text-center mt-4'>Votre panier est vide</h4>";
+        body.innerHTML = "<h4 class='h4 text-center mt-4'>Votre panier est vide, depechez-vous de le remplir</h4>";
     }
 
-
-
-
     table.appendChild(body);
+
 
 });

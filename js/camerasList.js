@@ -8,7 +8,7 @@
 const cameraPath = 'http://localhost:3000/api/cameras';
 
 // RAZ previous panier
-localStorage.clear();
+//localStorage.clear();
 
 
 
@@ -18,22 +18,31 @@ document.addEventListener('DOMContentLoaded', () =>{
     .then(response => response.json())
     .then(function(response){
         for(item of response){
-            let id = item['_id'];
-            let card = document.createElement('div');
-            card.classList.add('card', 'col-12', 'col-md-4', 'col-lg-3', 'm-2');
-            card.innerHTML = "<img src='" + item['imageUrl'] + "'/><h2>" + item['name'] + "</h2>" + "<p>" + item['description'] + "</p>" + "<span>" + parseInt(item['price']) / 100 + " \u20ac" + "</span>";
-            console.log(item['_id']);
-            baliseMain.appendChild(card);
-            // add eventlistener and launch product page with corresponding id
-            card.addEventListener('click', ()=>{
-                window.open('produit.html?id=' + id, '_self');
-            });
+            baliseMain.appendChild(make_card(item));         
         }
     });
 });
 
 
+/*    Make a card for bootstrap
+    take objet cmera (id,name,descriptions...)
+    return a card of item to insert in html
 
+
+*/
+
+function make_card(obj){
+    let id = obj['_id'];
+    let card = document.createElement('div');
+    card.classList.add('card', 'col-12', 'col-md-4', 'col-lg-3', 'm-2');
+    card.innerHTML = "<img src='" + obj['imageUrl'] + "'/><h2>" + obj['name'] + "</h2>" + "<p>" + obj['description'] + "</p>" + "<span>" + parseInt(obj['price']) / 100 + " \u20ac" + "</span>";
+    console.log(obj['_id']);   
+    // add eventlistener and launch product page with corresponding id
+    card.addEventListener('click', ()=>{
+        window.open('produit.html?id=' + id, '_self');
+    });
+    return card;
+}
 
 
 

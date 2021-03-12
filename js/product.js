@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     .then(function(response){
         //let id = response['_id'];
         let card = document.createElement('div');
-        card.classList.add('card', 'col-6', 'm-auto');
+        card.classList.add('card', 'col-12','col-md-10','col-lg-8', 'm-auto');
         card.innerHTML = "<img src='" + response['imageUrl'] + 
         "'/><h2>" + response['name'] + "</h2>" + 
         "<p>" + response['description'] + "</p>" + 
