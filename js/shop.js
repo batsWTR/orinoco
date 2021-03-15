@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 // affichage de la page
 function affichePanier(){
 
+    
     let total = 0;
 
     // Display form or not...
@@ -46,14 +47,15 @@ function affichePanier(){
     try{
         for (let item of shopList){
             let row = document.createElement('tr');
-            row.innerHTML = '<td>' + item.name + '</td><td class="text-right">' + parseInt(item.price) / 100 + '</td><td><i class="far fa-trash-alt"></i></td>';
+            row.innerHTML = '<td>' + item.name + '</td><td class="text-right">' + parseInt(item.price) / 100 + " \u20ac" + '</td><td><i my_attr=' + item._id + ' class="far fa-trash-alt supprimer"></i></td>';
             body.appendChild(row);
             total += item.price;
         }
         //total de la commande
         let row = document.createElement('tr');
-        row.innerHTML = '<td class="text-right">Total:</td><td class="text-right">' + total / 100 + '</td>';
+        row.innerHTML = '<td class="text-right">Total:</td><td class="text-right">' + total / 100 +  " \u20ac" + '</td>';
         body.appendChild(row);
+
         
         // ecoute du bouton commander
         btnCommander.addEventListener('click',envoiCommande);
@@ -64,13 +66,19 @@ function affichePanier(){
     }
 
     table.appendChild(body);
+
+    // listener sur les trash
+    let remove = document.getElementsByClassName('supprimer');
+    for (let item of remove){
+        item.addEventListener('click', enleverItem);
+    }
 }
 
 
 
 
 
-// envoi de la commande
+//-------------------------------------------------------------------------- envoi de la commande
 function envoiCommande(){
     console.log('envoi de la commande');
     btnCommander.style.backgroundColor = 'red';
@@ -89,4 +97,15 @@ function envoiCommande(){
         panierSave.clear();
         console.log(contact);
     }
+}
+
+
+//----------------------------------------------------------------- effacement d'un item
+function enleverItem(){
+    let id = this.getAttribute("my_attr");
+    console.log(id);
+    panierSave.remove(id);
+    location.reload();
+    //affichePanier();
+
 }

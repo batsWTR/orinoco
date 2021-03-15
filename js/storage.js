@@ -28,7 +28,7 @@ class panierSave{
         console.log('remove id');
         let tabItem = JSON.parse(localStorage.getItem('panier'));
         for(let index in tabItem){
-            if (id === tabItem[index]['id']){
+            if (id === tabItem[index]['_id']){
                 tabItem.splice(index,1);
                 if (tabItem.length === 0){
                     localStorage.removeItem('panier');
