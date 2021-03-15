@@ -54,11 +54,27 @@ class panierSave{
         return count;
     }
 
-    // retourne un tableau d'id ou 0 si aucun   TESTE
+    // retourne un tableau de produits ou 0
     static getAll(){
         console.log('get all id');
         return  JSON.parse(localStorage.getItem('panier'));
      
+    }
+
+
+    // retourne un tableau d'id ou 0 si aucun   TESTE
+    static getAllId(){
+        try{
+            let tabItem = JSON.parse(localStorage.getItem('panier'));
+            let tabId = [];
+            for (let item of tabItem){
+                tabId.push(item['_id']);
+            }
+            return tabId;
+
+        }catch{
+            return 0;
+        }
     }
 
     // efface le panier    TESTE

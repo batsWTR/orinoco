@@ -13,14 +13,27 @@
 
 document.addEventListener('DOMContentLoaded', () =>{
     // get list of items
-    let shopList = panierSave.getAll();
+    shopList = panierSave.getAll();
+
+
+
+    table = document.querySelector('table');
+    body = document.createElement('tbody');
+    formulaire = document.querySelector("#formulaire");
+    btnCommander = document.querySelector("#commander");
+
+
+    affichePanier();
+
+});
+
+
+
+
+// affichage de la page
+function affichePanier(){
 
     let total = 0;
-
-    let table = document.querySelector('table');
-    let body = document.createElement('tbody');
-    let formulaire = document.querySelector("#formulaire");
-    let btnCommander = document.querySelector("#commander");
 
     // Display form or not...
     if (panierSave.count() === 0){
@@ -33,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     try{
         for (let item of shopList){
             let row = document.createElement('tr');
-            row.innerHTML = '<td>' + item.name + '</td><td class="text-right">' + parseInt(item.price) / 100 + '</td>';
+            row.innerHTML = '<td>' + item.name + '</td><td class="text-right">' + parseInt(item.price) / 100 + '</td><td><i class="far fa-trash-alt"></i></td>';
             body.appendChild(row);
             total += item.price;
         }
@@ -41,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () =>{
         let row = document.createElement('tr');
         row.innerHTML = '<td class="text-right">Total:</td><td class="text-right">' + total / 100 + '</td>';
         body.appendChild(row);
+        
         // ecoute du bouton commander
         btnCommander.addEventListener('click',envoiCommande);
 
@@ -50,11 +64,29 @@ document.addEventListener('DOMContentLoaded', () =>{
     }
 
     table.appendChild(body);
-   
-
-});
+}
 
 
+
+
+
+// envoi de la commande
 function envoiCommande(){
     console.log('envoi de la commande');
+    btnCommander.style.backgroundColor = 'red';
+
+    console.log(formulaire.elements.city.validity.valid);
+    if (formulaire.elements.email.validity.valid && formulaire.elements.firstName.validity.valid && formulaire.elements.lastName.validity.valid && formulaire.elements.address.validity.valid && formulaire.elements.city.validity.valid){
+        let contact = {
+            firstName : formulaire.elements.firstName.value,
+            lastName : formulaire.elements.lastName.value,
+            address : formulaire.elements.address.value,
+            city : formulaire.elements.city.value,
+            email : formulaire.elements.email.value,
+            product_id : panierSave.getAllId()
+        };
+
+        panierSave.clear();
+        console.log(contact);
+    }
 }
