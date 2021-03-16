@@ -93,10 +93,15 @@ function envoiCommande(){
             address : formulaire.elements.address.value,
             city : formulaire.elements.city.value,
             email : formulaire.elements.email.value,
-            //product_id : panierSave.getAllId()
+            //products : panierSave.getAllId()
         };
-        let tmp = JSON.stringify(contact);
-        tmp += JSON.stringify(panierSave.getAllId());
+        let tmp = {
+            contact: JSON.stringify(contact),
+            products: JSON.stringify(panierSave.getAllId())
+        }
+
+
+
         panierSave.clear();
         console.log(tmp);
         
@@ -104,7 +109,7 @@ function envoiCommande(){
         fetch(cameraPath,{
             method: 'POST',
             headers: {'content-type': 'application/json'},
-            body: tmp
+            body: JSON.stringify(tmp)
         }).then(response => response.json()).then(data => {console.log(data);});
     }
 }

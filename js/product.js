@@ -18,12 +18,23 @@ document.addEventListener('DOMContentLoaded', () =>{
         card.innerHTML = "<img src='" + response['imageUrl'] + 
         "'/><h2>" + response['name'] + "</h2>" + 
         "<p>" + response['description'] + "</p>" + 
+        "<select name='lenses' id='lenses'></select>" + 
         "<span>" + parseInt(response['price']) / 100 + " \u20ac" + "</span>" +
         "<button id='button' class='btn btn-primary col-12 m-auto' data-bs-toggle='modal' data-bs-target='#fenModal'>Ajouter au panier</button>";
-
+        
+        
 
         console.log(response['_id']);
         baliseMain.appendChild(card);
+
+
+        //   select for lenses
+        let elt = document.querySelector('#lenses');
+        for( let index in response['lenses']){
+            elt.options[index] = new Option(response['lenses'][index],response['lenses'][index] );
+        }
+
+        // eventlistener des boutons
 
         let button = document.querySelector('#button');
         button.addEventListener('click', function(){
