@@ -10,6 +10,8 @@
 
 */
 
+const cameraPath = 'http://localhost:3000/api/cameras/order';
+
 
 document.addEventListener('DOMContentLoaded', () =>{
     // get list of items
@@ -30,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 
 
-// affichage de la page
+// ----------------------------------------------------affichage de la page
 function affichePanier(){
 
     
@@ -91,13 +93,22 @@ function envoiCommande(){
             address : formulaire.elements.address.value,
             city : formulaire.elements.city.value,
             email : formulaire.elements.email.value,
-            product_id : panierSave.getAllId()
+            //product_id : panierSave.getAllId()
         };
-
+        let tmp = JSON.stringify(contact);
+        tmp += JSON.stringify(panierSave.getAllId());
         panierSave.clear();
-        console.log(contact);
+        console.log(tmp);
+        
+        // fetch post
+        fetch(cameraPath,{
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: tmp
+        }).then(response => response.json()).then(data => {console.log(data);});
     }
 }
+
 
 
 //----------------------------------------------------------------- effacement d'un item
