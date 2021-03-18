@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () =>{
     let param = new URLSearchParams(window.location.search);
     const id = param.get('id');
 
+    // affiche nb item ds le panier
+    affich_panier_count();
+
 
     fetch(cameraPath + '/' + id)
     .then(response => response.json())

@@ -22,6 +22,11 @@ const cameraPath = 'http://localhost:3000/api/cameras';
     
 document.addEventListener('DOMContentLoaded', () =>{
     const baliseMain = document.getElementById('content');
+
+    // affiche nb item ds le panier
+    affich_panier_count();
+
+    
     fetch(cameraPath)
     .then(response => response.json())
     .then(function(response){
