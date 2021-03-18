@@ -23,9 +23,20 @@ document.addEventListener('DOMContentLoaded', () =>{
     body = document.createElement('tbody');
     formulaire = document.querySelector("#formulaire");
     btnCommander = document.querySelector("#commander");
+    let remove = document.getElementsByClassName('supprimer');
 
 
+    // affiche la page panier
     affichePanier();
+    
+    // ecoute du bouton commander
+    btnCommander.addEventListener('click',envoiCommande);
+
+    // ecouter les poubelles 
+    
+    for (let item of remove){
+        item.addEventListener('click', enleverItem);
+    }
 
 });
 
@@ -38,14 +49,15 @@ function affichePanier(){
     
     let total = 0;
 
-    // Display form or not...
+    // affiche le panier si il n est pas vide
     if (panierSave.count() === 0){
         formulaire.style.display = 'none';
     }else{
         formulaire.style.display = 'block';
     }
 
-    // essai iteration sur les items dans le panier
+
+    // essai iteration sur les items dans le panier, si erreur => le panier est vide
     try{
         for (let item of shopList){
             let row = document.createElement('tr');
@@ -58,22 +70,14 @@ function affichePanier(){
         row.innerHTML = '<td class="text-right">Total:</td><td class="text-right">' + total / 100 +  " \u20ac" + '</td>';
         body.appendChild(row);
 
-        
-        // ecoute du bouton commander
-        btnCommander.addEventListener('click',envoiCommande);
-
-
     }catch{
-        body.innerHTML = "<h4 class='h4 text-center mt-4'>Votre panier est vide, depechez-vous de le remplir</h4>";
+        body.innerHTML = "<tr><td colspan=3><h4 class='h4 text-center mt-4'>Votre panier est vide, depechez-vous de le remplir</h4></td></tr>";
     }
+
 
     table.appendChild(body);
 
-    // listener sur les trash
-    let remove = document.getElementsByClassName('supprimer');
-    for (let item of remove){
-        item.addEventListener('click', enleverItem);
-    }
+
 }
 
 
@@ -81,11 +85,13 @@ function affichePanier(){
 
 
 //-------------------------------------------------------------------------- envoi de la commande
-function envoiCommande(){
+function envoiCommande(event){
     console.log('envoi de la commande');
-    btnCommander.style.backgroundColor = 'red';
+    event.preventDefault();
 
     console.log(formulaire.elements.city.validity.valid);
+
+    // si le formulaire est valide...
     if (formulaire.elements.email.validity.valid && formulaire.elements.firstName.validity.valid && formulaire.elements.lastName.validity.valid && formulaire.elements.address.validity.valid && formulaire.elements.city.validity.valid){
         let contact = {
             firstName : formulaire.elements.firstName.value,
@@ -93,25 +99,21 @@ function envoiCommande(){
             address : formulaire.elements.address.value,
             city : formulaire.elements.city.value,
             email : formulaire.elements.email.value,
-            //products : panierSave.getAllId()
         };
-        let tmp = {
-            contact: JSON.stringify(contact),
-            products: JSON.stringify(panierSave.getAllId())
+
+
+        let dataEnvoi = {
+            contact : contact,
+            products: panierSave.getAllId()
         }
-
-
-
-        panierSave.clear();
-        console.log(tmp);
         
-        // fetch post
-        fetch(cameraPath,{
-            method: 'POST',
-            headers: {'content-type': 'application/json'},
-            body: JSON.stringify(tmp)
-        }).then(response => response.json()).then(data => {console.log(data);});
+        panierSave.clear();
+        console.log(dataEnvoi);
+
+        envoyer(dataEnvoi).then(reponse); 
+    
     }
+
 }
 
 
@@ -122,6 +124,23 @@ function enleverItem(){
     console.log(id);
     panierSave.remove(id);
     location.reload();
-    //affichePanier();
+
+}
+
+
+async function envoyer(data){
+    var requestOptions = {
+        method: 'POST',
+        headers: { "content-type" : "application/json" },
+        body: JSON.stringify(data)
+    };
+
+    let resp = await fetch(cameraPath,requestOptions);
+    return await resp.json();
+}
+
+
+function reponse(response){
+    console.log(response['orderId']);
 
 }
