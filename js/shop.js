@@ -11,6 +11,7 @@
 */
 
 const cameraPath = 'http://localhost:3000/api/cameras/order';
+let prix_total = 0;
 
 
 document.addEventListener('DOMContentLoaded', () =>{
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 function affichePanier(){
 
     
-    let total = 0;
+    
 
     // affiche le panier si il n est pas vide
     if (panierSave.count() === 0){
@@ -63,11 +64,11 @@ function affichePanier(){
             let row = document.createElement('tr');
             row.innerHTML = '<td>' + item.name + '</td><td class="text-right">' + parseInt(item.price) / 100 + " \u20ac" + '</td><td><i my_attr=' + item._id + ' class="far fa-trash-alt supprimer"></i></td>';
             body.appendChild(row);
-            total += item.price;
+            prix_total += item.price;
         }
         //total de la commande
         let row = document.createElement('tr');
-        row.innerHTML = '<td class="text-right">Total:</td><td class="text-right">' + total / 100 +  " \u20ac" + '</td>';
+        row.innerHTML = '<td class="text-right">Total:</td><td class="text-right">' + prix_total / 100 +  " \u20ac" + '</td>';
         body.appendChild(row);
 
     }catch{
@@ -89,7 +90,6 @@ function envoiCommande(event){
     console.log('envoi de la commande');
     event.preventDefault();
 
-    console.log(formulaire.elements.city.validity.valid);
 
     // si le formulaire est valide...
     if (formulaire.elements.email.validity.valid && formulaire.elements.firstName.validity.valid && formulaire.elements.lastName.validity.valid && formulaire.elements.address.validity.valid && formulaire.elements.city.validity.valid){
@@ -107,9 +107,10 @@ function envoiCommande(event){
             products: panierSave.getAllId()
         }
         
-        panierSave.clear();
+        
         console.log(dataEnvoi);
 
+        // envoi des données au serveur
         envoyer(dataEnvoi).then(reponse); 
     
     }
@@ -127,7 +128,7 @@ function enleverItem(){
 
 }
 
-
+// ---------------------------------------- fonction d'envoi des données
 async function envoyer(data){
     var requestOptions = {
         method: 'POST',
@@ -139,8 +140,15 @@ async function envoyer(data){
     return await resp.json();
 }
 
-
+//-----------------------------------  fonction lancée lors de la réponse du serveur
+// recuperation orderid et prix total
+// suppression du panier
+// envoi des données à la page confirmation
 function reponse(response){
-    console.log(response['orderId']);
+    //console.log('Order id: ' + response['orderId']);
+    //console.log('Prix total: ' + prix_total/100);
+    panierSave.clear();
+
+    window.open('confirmation.html?id=' + response['orderId'] + '&prix=' + prix_total + '&nom=' + response['contact']['lastName'], '_self' );
 
 }

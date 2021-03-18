@@ -1,15 +1,16 @@
 
 
 
-let cameraPath = 'http://localhost:3000/api/cameras';
+const cameraPath = 'http://localhost:3000/api/cameras';
 
 document.addEventListener('DOMContentLoaded', () =>{
     const baliseMain = document.getElementById('content');
     // get id from product
     let param = new URLSearchParams(window.location.search);
     const id = param.get('id');
-    cameraPath += '/' + id;
-    fetch(cameraPath)
+
+
+    fetch(cameraPath + '/' + id)
     .then(response => response.json())
     .then(function(response){
         //let id = response['_id'];
