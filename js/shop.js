@@ -72,7 +72,7 @@ function affichePanier(){
         body.appendChild(row);
 
     }catch{
-        body.innerHTML = "<tr><td colspan=3><h4 class='h4 text-center mt-4'>Votre panier est vide, depechez-vous de le remplir</h4></td></tr>";
+        body.innerHTML = "<tr><td colspan=3><h4 class='h4 text-center mt-4'>Votre panier est vide, depechez-vous de le remplir !</h4></td></tr>";
     }
 
 

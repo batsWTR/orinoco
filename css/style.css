@@ -13,11 +13,12 @@ bg:
 body{
     background: linear-gradient(#f3eaf2, #ffff);
     font-size: 62.5%;
-    height: 110vh;
+    /*height: 110vh; */
 }
 
-header{
-    
+.navbar-nav{
+    flex-direction: row;
+    justify-content: space-around;
 }
 header sup{
     position: relative;
@@ -58,6 +59,10 @@ nav a{
 }
 
 /* FOOTER---------------   */
+
+footer{
+    background-color: #f3eaf2;
+}
 
 footer ul{
     list-style: none;
