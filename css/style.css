@@ -11,10 +11,12 @@ bg:
 
 
 body{
-    background: linear-gradient(#f3eaf2, #ffff);
+    background: linear-gradient(#f3eaf2, #ffff) no-repeat;
     font-size: 62.5%;
     /*height: 110vh; */
 }
+
+/*   Header  ------------*/
 
 .navbar-nav{
     flex-direction: row;
@@ -32,6 +34,9 @@ header sup{
     background-clip: text;
     color: transparent;
 }
+
+
+/* content index.html   ----------------*/
 
 .card{
     background-color: #fbf9fb;
@@ -69,13 +74,17 @@ footer ul{
     font-size: 1.3rem;
 }
 
+.reseaux ul{
+    position: relative;
+    right: 1.2rem;
+}
 .reseaux i{
     font-size: 2.5rem;
     margin: 0.6rem;
 }
 
 /*
-shop html
+shop html -----------------------
 */
 
 table i{
