@@ -11,4 +11,11 @@ document.addEventListener('DOMContentLoaded', () =>{
     console.log(params.get('prix'));
     console.log(params.get('nom'));
 
+    const baliseMain = document.getElementById('content');
+
+    let confirmation = document.createElement('div');
+    confirmation.innerHTML = "<p>Merci " + params.get('nom') + " pour votre achat de " + parseInt(params.get('prix')) / 100 + "\u20ac, " +
+    "la référence de votre achat: " + params.get('id');
+
+    baliseMain.appendChild(confirmation);
 });
