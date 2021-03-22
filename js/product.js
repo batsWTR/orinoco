@@ -5,7 +5,8 @@ const cameraPath = 'http://localhost:3000/api/cameras';
 
 document.addEventListener('DOMContentLoaded', () =>{
     const baliseMain = document.getElementById('content');
-    // get id from product
+
+    // récupère l'id passé en parametre à la fenetre
     let param = new URLSearchParams(window.location.search);
     const id = param.get('id');
 
@@ -16,23 +17,13 @@ document.addEventListener('DOMContentLoaded', () =>{
     fetch(cameraPath + '/' + id)
     .then(response => response.json())
     .then(function(response){
-        //let id = response['_id'];
-        let card = document.createElement('div');
-        card.classList.add('card', 'col-12','col-md-10','col-lg-8', 'm-auto');
-        card.innerHTML = "<img src='" + response['imageUrl'] + 
-        "'/><h2>" + response['name'] + "</h2>" + 
-        "<p>" + response['description'] + "</p>" + 
-        "<select name='lenses' id='lenses'></select>" + 
-        "<span>" + parseInt(response['price']) / 100 + " \u20ac" + "</span>" +
-        "<button id='button' class='btn btn-primary col-12 m-auto' data-bs-toggle='modal' data-bs-target='#fenModal'>Ajouter au panier</button>";
+   
         
-        
-
-        console.log(response['_id']);
-        baliseMain.appendChild(card);
+        // creation de la carte
+        baliseMain.appendChild(product_card(response));
 
 
-        //   select for lenses
+        //  ajout selection lentilles
         let elt = document.querySelector('#lenses');
         for( let index in response['lenses']){
             elt.options[index] = new Option(response['lenses'][index],response['lenses'][index] );
@@ -59,4 +50,21 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 
 
+// prend 1 objet camera en entrée et retourne une carte à inserer dans le DOM
+
+function product_card(obj){
+    let card = document.createElement('div');
+    card.classList.add('card', 'col-12','col-md-10','col-lg-8', 'm-auto');
+    card.innerHTML = "<img src='" + obj['imageUrl'] + "' />" + 
+    "<div class='card-body'>" +
+    "<h2 class='card-title'>" + obj['name'] + "</h2>" + 
+    "<h4 class=card-subtitle'>Prix: " + parseInt(obj['price']) / 100 + "\u20ac" + " ttc</h4>" +
+    "<p class='fs-1 card-text'>" + obj['description'] + "</p>" + 
+    "<label for='lenses'>Objectif:</label>" +
+    "<select name='lenses' id='lenses'></select>" + 
+    "<button id='button' class='btn btn-primary col-12 mt-4' data-bs-toggle='modal' data-bs-target='#fenModal'>Ajouter au panier</button>" +
+    "</div";
+
+    return card;
+}
 

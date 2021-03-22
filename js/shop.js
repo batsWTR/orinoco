@@ -106,13 +106,13 @@ function envoiCommande(event){
             contact : contact,
             products: panierSave.getAllId()
         }
-        
-        
-        console.log(dataEnvoi);
 
         // envoi des données au serveur
         envoyer(dataEnvoi).then(reponse); 
     
+    }
+    else{
+        btnCommander.style.backgroundColor = 'red';
     }
 
 }
@@ -145,8 +145,7 @@ async function envoyer(data){
 // suppression du panier
 // envoi des données à la page confirmation
 function reponse(response){
-    //console.log('Order id: ' + response['orderId']);
-    //console.log('Prix total: ' + prix_total/100);
+
     panierSave.clear();
 
     window.open('confirmation.html?id=' + response['orderId'] + '&prix=' + prix_total + '&nom=' + response['contact']['lastName'], '_self' );

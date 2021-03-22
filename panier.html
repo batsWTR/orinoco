@@ -13,18 +13,18 @@
     </head>
     <body>
         <header class="container-fluid">
-            <div class="row">
-                <nav class="navbar navbar-expand">
+            <div class="row py-4">
+                <nav class="navbar w-100">
                     <a class="navbar-brand" href="https://fr.wikipedia.org/wiki/Orinoco">
                         <i class="fas fa-shopping-cart"></i>
-                        Orinoco
+                        <h1 class="h1">Orinoco</h1>
                     </a>
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav w-25">
                         <li class="nav-item active">
                             <a class="nav-link" href="index.html">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="panier.html"><i class="fas fa-shopping-bag"></i></a>
+                            <a class="nav-link" href="panier.html"><i class="fas fa-shopping-bag"></i><sup id="item_count"></sup></a>
                         </li>
                     </ul>
                 </nav>
@@ -46,32 +46,58 @@
             <!--    Formulaire de contact        -->
             <div class="row">
                 <form name="formulaire" id='formulaire' class="border p-3 m-auto col-12 col-lg-8">
-                    <div>
-                        <label>Email</label>
-                        <input id="email" type="email" required>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input id="email" type="email" class="form-control" required>
                     </div>
-                    <div>
-                        <label for="firstName">Nom</label>
-                        <input id="firstName" type="text" maxlength="30" pattern="[A-Za-z]+" required>
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">Nom:</label>
+                        <input id="firstName" type="text" class="form-control" maxlength="30" pattern="[A-Za-z]+" required>
                     </div>
-                    <div>
-                        <label for="lastName">Prenom</label>
-                        <input id="lastName" type="text"  maxlength="30" pattern="[A-Za-z]+" required>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label" >Prenom:</label>
+                        <input id="lastName" type="text" class="form-control"  maxlength="30" pattern="[A-Za-z]+" required>
                     </div>
-                    <div>
-                        <label for="address">Adresse</label>
-                        <input id="address" type="text"  maxlength="60" required>
+                    <div class="mb-3">
+                        <label for="address" class="form-label" >Adresse:</label>
+                        <input id="address" type="text" class="form-control"  maxlength="60" required>
                     </div>
-                    <div>
-                        <label for="city">Ville</label>
-                        <input id="city" type="text"  maxlength="30" pattern="[A-Za-z]+" required>
+                    <div class="mb-3">
+                        <label for="city" class="form-label" >Ville:</label>
+                        <input id="city" type="text" class="form-control" maxlength="30" pattern="[A-Za-z]+" required>
                     </div>
                     <button id='commander' type="button" class="btn btn-primary col-12 my-3">Commander</button>
                 </form>
             </div>
         </main>
-        <footer>
-            
+        <footer class="container-fluid">
+            <div class="row pt-4 mt-3">
+                <div class="col-12 col-md-4 text-center boutique">
+                    <h3>Nos autres boutiques</h3>
+                    <ul>
+                        <li><a href="#">🇫🇷  Oribook</a></li>
+                        <li><a href="#">🇫🇷  Oritextil</a></li>
+                        <li><a href="#">🇫🇷  Orifood</a></li>
+                        <li><a href="#">🇫🇷  Orifique</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4 text-center">
+                    <h3>A propos</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Conditions générales</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-4 text-center reseaux">
+                    <h3>Nos réseaux</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>            
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
         <script src="js/storage.js"></script>

@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', () =>{
 });
 
 
-/*    Make a card for bootstrap
-    take objet cmera (id,name,descriptions...)
-    return a card of item to insert in html
+/*    Fabrique une carte de présentation
+    prends un objet caméra (id,name,descriptions...)
+    retourne une carte à inserer dans le DOM
 
 
 */
@@ -48,9 +48,15 @@ function make_card(obj){
     let id = obj['_id'];
     let card = document.createElement('div');
     card.classList.add('card', 'col-12','my-3', 'col-md-4', 'col-lg-3', 'm-lg-3');
-    card.innerHTML = "<img src='" + obj['imageUrl'] + "'/><h2>" + obj['name'] + "</h2>" + "<p>" + obj['description'] + "</p>" + "<span>" + parseInt(obj['price']) / 100 + " \u20ac" + "</span>";
-    console.log(obj['_id']);   
-    // add eventlistener and launch product page with corresponding id
+    card.innerHTML = "<img src='" + obj['imageUrl'] + "'/>" +
+    "<div class='card-body'>" + 
+    "<h2 class='card-title'>" + obj['name'] + "</h2>" +
+    "<h4 class='card_subtitle'>Prix: " + parseInt(obj['price']) / 100 + " \u20ac" + " ttc</h4>" + 
+    "<p class='card-text'>" + obj['description'] + "</p>" + 
+    "</div";
+
+
+    //  eventlistener ouvre la page produit avec l'id en parametre
     card.addEventListener('click', ()=>{
         window.open('produit.html?id=' + id, '_self');
     });
