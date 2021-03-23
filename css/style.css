@@ -12,8 +12,7 @@ bg:
 
 body{
     background: linear-gradient(#f3eaf2, #ffff) no-repeat;
-    font-size: 62.5%;
-    /*height: 110vh; */
+    /*font-size: 62.5%;*/
 }
 
 /*   Header  ------------*/
@@ -32,6 +31,7 @@ header sup{
     font-size: 3rem;
     background: linear-gradient(120deg, #d88323, #915aff);
     background-clip: text;
+    -webkit-background-clip: text;
     color: transparent;
 }
 

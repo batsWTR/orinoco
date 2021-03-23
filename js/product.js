@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     // affiche nb item ds le panier
     affich_panier_count();
 
-
+    // requete AJAX
     fetch(cameraPath + '/' + id)
     .then(response => response.json())
     .then(function(response){

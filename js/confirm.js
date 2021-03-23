@@ -14,8 +14,9 @@ document.addEventListener('DOMContentLoaded', () =>{
     const baliseMain = document.getElementById('content');
 
     let confirmation = document.createElement('div');
-    confirmation.innerHTML = "<p>Merci " + params.get('nom') + " pour votre achat de " + parseInt(params.get('prix')) / 100 + "\u20ac, " +
-    "la référence de votre achat: " + params.get('id');
+    confirmation.classList.add('my-3');
+    confirmation.innerHTML = "<h5 class='text-center'>Merci " + params.get('nom') + " pour votre achat de " + parseInt(params.get('prix')) / 100 + "\u20ac, " +
+    "la référence de votre transaction : " + params.get('id') + "</h5>";
 
     baliseMain.appendChild(confirmation);
 });
