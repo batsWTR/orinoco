@@ -59,7 +59,7 @@ function product_card(obj){
     "<div class='card-body'>" +
     "<h2 class='card-title'>" + obj['name'] + "</h2>" + 
     "<h4 class=card-subtitle'>Prix: " + parseInt(obj['price']) / 100 + "\u20ac" + " ttc</h4>" +
-    "<p class='fs-1 card-text'>" + obj['description'] + "</p>" + 
+    "<p class='fs-4 card-text'>" + obj['description'] + "</p>" + 
     "<label for='lenses'>Objectif:</label>" +
     "<select name='lenses' id='lenses'></select>" + 
     "<button id='button' class='btn btn-primary col-12 mt-4' data-bs-toggle='modal' data-bs-target='#fenModal'>Ajouter au panier</button>" +

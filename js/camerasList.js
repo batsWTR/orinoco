@@ -51,7 +51,7 @@ function make_card(obj){
     card.innerHTML = "<img src='" + obj['imageUrl'] + "'/>" +
     "<div class='card-body'>" + 
     "<h2 class='card-title'>" + obj['name'] + "</h2>" +
-    "<h4 class='card_subtitle'>Prix: " + parseInt(obj['price']) / 100 + " \u20ac" + " ttc</h4>" + 
+    "<h4 class='card_subtitle'>Prix: " + parseInt(obj['price']) / 100 + "\u20ac" + " ttc</h4>" + 
     "<p class='card-text'>" + obj['description'] + "</p>" + 
     "</div";
 

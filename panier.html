@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <!--- bootstrap-->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css"/>
         <!-- font awesome-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
@@ -33,7 +33,7 @@
         <main class="container">
             <!---     Facture                      -->
             <div class="row" id="content">
-                <table class="table col-12 col-lg-8 m-auto" id="table">
+                <table class="table table-bordered col-10 col-lg-8 m-auto" id="table">
                     <thead class="thead-light">
                         <tr>
                             <th>Produit</th>
@@ -46,18 +46,21 @@
             <!--    Formulaire de contact        -->
             <div class="row mt-4">
                 <form name="formulaire" id='formulaire' class="border p-3 m-auto col-12 col-lg-8">
+                    <div class="row">
+                        <div class="mb-3 col-6">
+                            <label for="firstName" class="form-label">Nom:</label>
+                            <input id="firstName" type="text" class="form-control col-8" maxlength="30" pattern="[A-Za-z]+" required>
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label for="lastName" class="form-label" >Prenom:</label>
+                            <input id="lastName" type="text" class="form-control col-8"  maxlength="30" pattern="[A-Za-z]+" required>
+                        </div>
+                    </div>
                     <div class="mb-3"> 
                         <label for="email" class="form-label">Email:</label>
                         <input id="email" type="email" class="form-control col-8" required>
                     </div>
-                    <div class="mb-3">
-                        <label for="firstName" class="form-label">Nom:</label>
-                        <input id="firstName" type="text" class="form-control col-8" maxlength="30" pattern="[A-Za-z]+" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="lastName" class="form-label" >Prenom:</label>
-                        <input id="lastName" type="text" class="form-control col-8"  maxlength="30" pattern="[A-Za-z]+" required>
-                    </div>
+                    
                     <div class="mb-3">
                         <label for="address" class="form-label" >Adresse:</label>
                         <input id="address" type="text" class="form-control"  maxlength="60" required>
