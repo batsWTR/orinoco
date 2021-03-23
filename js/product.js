@@ -58,7 +58,7 @@ function product_card(obj){
     card.innerHTML = "<img src='" + obj['imageUrl'] + "' />" + 
     "<div class='card-body'>" +
     "<h2 class='card-title'>" + obj['name'] + "</h2>" + 
-    "<h4 class=card-subtitle'>Prix: " + parseInt(obj['price']) / 100 + "\u20ac" + " ttc</h4>" +
+    "<h4 class=card-subtitle'>Prix: " + "<span class='fw-bold'>" + parseInt(obj['price']) / 100 + "\u20ac" + " </span>ttc</h4>" +
     "<p class='fs-4 card-text'>" + obj['description'] + "</p>" + 
     "<label for='lenses'>Objectif:</label>" +
     "<select name='lenses' id='lenses'></select>" + 

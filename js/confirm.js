@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () =>{
     confirmation.classList.add('my-3', 'alert', 'alert-success');
     confirmation.setAttribute('role', 'alert');
     confirmation.innerHTML = "<p class='fs-3 text-center'>Merci " + params.get('nom') + " pour votre achat de " + parseInt(params.get('prix')) / 100 + "\u20ac, " +
-    "la référence de votre transaction : " + "</p><h5 class='text-center'>" +  params.get('id') + "</h5>";
+    "la référence de votre transaction : " + "</p><h5 class='text-center fw-bold'>" +  params.get('id') + "</h5>";
 
     baliseMain.appendChild(confirmation);
 });

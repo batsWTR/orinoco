@@ -47,9 +47,6 @@ document.addEventListener('DOMContentLoaded', () =>{
 // ----------------------------------------------------affichage de la page
 function affichePanier(){
 
-    
-    
-
     // affiche le panier si il n est pas vide
     if (panierSave.count() === 0){
         formulaire.style.display = 'none';
@@ -62,13 +59,13 @@ function affichePanier(){
     try{
         for (let item of shopList){
             let row = document.createElement('tr');
-            row.innerHTML = '<td>' + item.name + '</td><td class="text-right">' + parseInt(item.price) / 100 + " \u20ac" + '</td><td><i my_attr=' + item._id + ' class="far fa-trash-alt supprimer"></i></td>';
+            row.innerHTML = '<td>' + item.name + '</td><td class="text-center">' + parseInt(item.price) / 100 + " \u20ac" + '</td><td class="text-center"><i my_attr=' + item._id + ' class="far fa-trash-alt supprimer"></i></td>';
             body.appendChild(row);
             prix_total += item.price;
         }
         //total de la commande
         let row = document.createElement('tr');
-        row.innerHTML = '<td class="text-end">Total:</td><td class="text-right">' + prix_total / 100 +  " \u20ac" + '</td>';
+        row.innerHTML = '<td class="text-end fw-bold">Total:</td><td class="text-center text-success">' + prix_total / 100 +  " \u20ac" + '</td>';
         body.appendChild(row);
 
     }catch{
@@ -112,7 +109,7 @@ function envoiCommande(event){
     
     }
     else{
-        btnCommander.style.backgroundColor = 'red';
+        btnCommander.style.backgroundColor = '#dc3545';
     }
 
 }
@@ -122,7 +119,6 @@ function envoiCommande(event){
 //----------------------------------------------------------------- effacement d'un item
 function enleverItem(){
     let id = this.getAttribute("my_attr");
-    console.log(id);
     panierSave.remove(id);
     location.reload();
 

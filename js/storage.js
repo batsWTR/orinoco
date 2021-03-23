@@ -56,9 +56,7 @@ class panierSave{
 
     // retourne un tableau de produits ou 0
     static getAll(){
-        console.log('get all id');
-        return  JSON.parse(localStorage.getItem('panier'));
-     
+        return  JSON.parse(localStorage.getItem('panier'));   
     }
 
 
@@ -86,6 +84,17 @@ class panierSave{
 
 
 
+// affichage dans index et produit du nombre d'items dans le panier
+function affich_panier_count(){
+    let elem = document.querySelector('#item_count');
+
+    if (panierSave.count() === 0){
+        elem.textContent = '';
+    }
+    else{
+        elem.textContent = panierSave.count();
+    }
+}
 let bats = {name:'bats', id: '64'};
 //panierSave.clear();
 //panierSave.add(bats);
@@ -100,16 +109,3 @@ let bats = {name:'bats', id: '64'};
 //console.log(panierSave.getAll());
 //console.log(panierSave.remove('64'));
 //console.log(panierSave.getAll());
-
-
-// affichage dans index et produit du nombre d'items dans le panier
-function affich_panier_count(){
-    let elem = document.querySelector('#item_count');
-
-    if (panierSave.count() === 0){
-        elem.textContent = '';
-    }
-    else{
-        elem.textContent = panierSave.count();
-    }
-}
