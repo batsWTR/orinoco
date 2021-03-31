@@ -95,7 +95,9 @@ function affich_panier_count(){
         elem.textContent = panierSave.count();
     }
 }
-let bats = {name:'bats', id: '64'};
+
+
+//let bats = {name:'bats', id: '64'};
 //panierSave.clear();
 //panierSave.add(bats);
 //panierSave.getAll();
