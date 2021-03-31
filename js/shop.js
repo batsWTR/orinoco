@@ -15,20 +15,19 @@ let prix_total = 0;
 
 
 document.addEventListener('DOMContentLoaded', () =>{
-    // get list of items
-    shopList = panierSave.getAll();
+    
 
 
 
     table = document.querySelector('table');
-    body = document.createElement('tbody');
+    
     formulaire = document.querySelector("#formulaire");
     btnCommander = document.querySelector("#commander");
     let remove = document.getElementsByClassName('supprimer');
 
 
     // affiche la page panier
-    affichePanier();
+    table.appendChild(affichePanier());
     
     // ecoute du bouton commander
     btnCommander.addEventListener('click',envoiCommande);
@@ -46,6 +45,11 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 // ----------------------------------------------------affichage de la page
 function affichePanier(){
+
+    // get list of items
+    const shopList = panierSave.getAll();
+
+    let body = document.createElement('tbody');
 
     // affiche le panier si il n est pas vide
     if (panierSave.count() === 0){
@@ -73,9 +77,7 @@ function affichePanier(){
     }
 
 
-    table.appendChild(body);
-
-
+    return body;
 }
 
 
@@ -97,18 +99,18 @@ function envoiCommande(event){
             city : formulaire.elements.city.value,
             email : formulaire.elements.email.value,
         };
-
-
         let dataEnvoi = {
             contact : contact,
             products: panierSave.getAllId()
         }
 
+        console.log('Le formulaire est valide');
         // envoi des données au serveur
         envoyer(dataEnvoi).then(reponse); 
     
     }
     else{
+        console.log("Le formulaire n'est pas valide");
         btnCommander.style.backgroundColor = '#dc3545';
     }
 

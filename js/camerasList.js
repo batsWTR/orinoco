@@ -26,14 +26,15 @@ document.addEventListener('DOMContentLoaded', () =>{
     // affiche nb item ds le panier
     affich_panier_count();
 
-    
+
     fetch(cameraPath)
     .then(response => response.json())
     .then(function(response){
         for(item of response){
             baliseMain.appendChild(make_card(item));         
         }
-    });
+    }).catch(console.warn);
+
 });
 
 
@@ -43,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 
 */
-
 function make_card(obj){
     let id = obj['_id'];
     let card = document.createElement('div');
